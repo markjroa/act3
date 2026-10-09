@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-box">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="eyebrow">StudyHub</p>
+            <h2>Portal</h2>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/courses">Courses</a>
+          <a href="/assignments">Assignments</a>
+          <a class="active" href="/grades">Grades</a>
+          <a href="/announcements">Announcements</a>
+          <% if (user.role === 'admin') { %>
+            <a href="/admin">Admin</a>
+          <% } %>
+          <a href="/logout">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Academic record</p>
+            <h1>Grades</h1>
+          </div>
+        </header>
+
+        <section class="panel full-width">
+          <table class="grade-table">
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>Assessment</th>
+                <th>Score</th>
+                <th>Grade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% grades.forEach(grade => { %>
+                <tr>
+                  <td><%= grade.course %></td>
+                  <td><%= grade.assessment %></td>
+                  <td><%= grade.score %>%</td>
+                  <td><span class="grade-pill"><%= grade.grade %></span></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

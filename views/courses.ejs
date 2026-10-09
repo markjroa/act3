@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-box">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="eyebrow">StudyHub</p>
+            <h2>Portal</h2>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="/dashboard">Dashboard</a>
+          <a class="active" href="/courses">Courses</a>
+          <a href="/assignments">Assignments</a>
+          <a href="/grades">Grades</a>
+          <a href="/announcements">Announcements</a>
+          <% if (user.role === 'admin') { %>
+            <a href="/admin">Admin</a>
+          <% } %>
+          <a href="/logout">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Course list</p>
+            <h1>My Courses</h1>
+          </div>
+        </header>
+
+        <section class="cards-grid">
+          <% courses.forEach(course => { %>
+            <article class="course-card <%= course.color %>">
+              <div class="course-header">
+                <span class="tag"><%= course.code %></span>
+                <span class="status">Active</span>
+              </div>
+              <h3><%= course.title %></h3>
+              <p><strong>Instructor:</strong> <%= course.instructor %></p>
+              <p><strong>Schedule:</strong> <%= course.schedule %></p>
+              <p><strong>Room:</strong> <%= course.room %></p>
+              <button class="secondary-button">Open course</button>
+            </article>
+          <% }) %>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

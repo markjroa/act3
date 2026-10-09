@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-box">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="eyebrow">StudyHub</p>
+            <h2>Portal</h2>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a class="active" href="/dashboard">Dashboard</a>
+          <a href="/courses">Courses</a>
+          <a href="/assignments">Assignments</a>
+          <a href="/grades">Grades</a>
+          <a href="/announcements">Announcements</a>
+          <% if (user.role === 'admin') { %>
+            <a href="/admin">Admin</a>
+          <% } %>
+          <a href="/logout">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Welcome back</p>
+            <h1><%= user.name %></h1>
+          </div>
+          <span class="role-pill"><%= user.role %></span>
+        </header>
+
+        <section class="stats-grid">
+          <div class="stat-card">
+            <span>Enrolled Courses</span>
+            <strong><%= stats.courses %></strong>
+          </div>
+          <div class="stat-card">
+            <span>Assignments</span>
+            <strong><%= stats.assignments %></strong>
+          </div>
+          <div class="stat-card">
+            <span>Announcements</span>
+            <strong><%= stats.announcements %></strong>
+          </div>
+          <div class="stat-card">
+            <span>Average Score</span>
+            <strong><%= stats.average.toFixed(1) %>%</strong>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>My Courses</h3>
+              <a href="/courses">View all</a>
+            </div>
+            <div class="course-list">
+              <% courses.forEach(course => { %>
+                <div class="mini-course">
+                  <div class="mini-course-badge <%= course.color %>"><%= course.code %></div>
+                  <div>
+                    <h4><%= course.title %></h4>
+                    <p><%= course.instructor %></p>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Recent Announcements</h3>
+              <a href="/announcements">All</a>
+            </div>
+            <ul class="announcement-list">
+              <% announcements.forEach(item => { %>
+                <li>
+                  <strong><%= item.title %></strong>
+                  <small><%= item.date %></small>
+                  <p><%= item.message %></p>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

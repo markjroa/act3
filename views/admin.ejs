@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-box">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="eyebrow">StudyHub</p>
+            <h2>Portal</h2>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/courses">Courses</a>
+          <a href="/assignments">Assignments</a>
+          <a href="/grades">Grades</a>
+          <a href="/announcements">Announcements</a>
+          <a class="active" href="/admin">Admin</a>
+          <a href="/logout">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Operations</p>
+            <h1>Administration</h1>
+          </div>
+        </header>
+
+        <section class="stats-grid">
+          <div class="stat-card">
+            <span>Total Users</span>
+            <strong><%= summary.totalUsers %></strong>
+          </div>
+          <div class="stat-card">
+            <span>Courses</span>
+            <strong><%= summary.totalCourses %></strong>
+          </div>
+          <div class="stat-card">
+            <span>Assignments</span>
+            <strong><%= summary.totalAssignments %></strong>
+          </div>
+          <div class="stat-card">
+            <span>Submissions</span>
+            <strong><%= summary.totalSubmissions %></strong>
+          </div>
+        </section>
+
+        <section class="content-grid admin-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Users</h3>
+            </div>
+            <ul class="simple-list">
+              <% users.forEach(userItem => { %>
+                <li><strong><%= userItem.name %></strong> — <%= userItem.role %></li>
+              <% }) %>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Submission Review</h3>
+            </div>
+            <ul class="simple-list submissions-list">
+              <% submissions.forEach(submission => { %>
+                <li class="submission-item">
+                  <div class="submission-info">
+                    <strong><%= submission.title %></strong>
+                    <span>Student: <%= submission.student %></span>
+                    <span>File: <%= submission.file %></span>
+                  </div>
+                  <div class="submission-actions">
+                    <span class="status-badge <%= (submission.status || 'pending') %>"><%= (submission.status || 'pending') %></span>
+                    <form method="POST" action="/admin/submissions/<%= submission.id %>/decision">
+                      <input type="hidden" name="action" value="accept" />
+                      <button type="submit" class="small-btn accept-btn">Accept</button>
+                    </form>
+                    <form method="POST" action="/admin/submissions/<%= submission.id %>/decision">
+                      <input type="hidden" name="action" value="deny" />
+                      <button type="submit" class="small-btn deny-btn">Deny</button>
+                    </form>
+                  </div>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

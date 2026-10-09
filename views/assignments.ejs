@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-box">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="eyebrow">StudyHub</p>
+            <h2>Portal</h2>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/courses">Courses</a>
+          <a class="active" href="/assignments">Assignments</a>
+          <a href="/grades">Grades</a>
+          <a href="/announcements">Announcements</a>
+          <% if (user.role === 'admin') { %>
+            <a href="/admin">Admin</a>
+          <% } %>
+          <a href="/logout">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Assessment center</p>
+            <h1>Assignments</h1>
+          </div>
+        </header>
+
+        <% if (success) { %>
+          <div class="alert success">Assignment submitted successfully.</div>
+        <% } %>
+
+        <section class="panel full-width">
+          <div class="panel-header">
+            <h3>Current Tasks</h3>
+          </div>
+
+          <div class="assignment-list">
+            <% assignments.forEach(assignment => { %>
+              <div class="assignment-item">
+                <div>
+                  <span class="mini-tag"><%= assignment.course %></span>
+                  <h4><%= assignment.title %></h4>
+                  <p><%= assignment.description %></p>
+                </div>
+                <div class="assignment-meta">
+                  <span>Due: <%= assignment.due %></span>
+                  <span>Status: <%= assignment.status %></span>
+                  <form method="POST" action="/assignments/<%= assignment.id %>/submit">
+                    <input type="text" name="file" value="assignment_<%= assignment.id %>_submission.pdf" />
+                    <button type="submit">Submit</button>
+                  </form>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

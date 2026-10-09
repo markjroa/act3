@@ -1,0 +1,152 @@
+{
+  "users": [
+    {
+      "username": "student",
+      "password": "student123",
+      "name": "Aisha Morgan",
+      "role": "student"
+    },
+    {
+      "username": "lecturer",
+      "password": "lecturer123",
+      "name": "Dr. Daniel Brooks",
+      "role": "lecturer"
+    },
+    {
+      "username": "admin",
+      "password": "admin123",
+      "name": "Emma Patel",
+      "role": "admin"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "code": "CS101",
+      "title": "Introduction to Programming",
+      "instructor": "Dr. Daniel Brooks",
+      "students": [
+        "student"
+      ],
+      "schedule": "Mon/Wed 09:00",
+      "room": "Lab 2",
+      "color": "blue"
+    },
+    {
+      "id": 2,
+      "code": "BIO220",
+      "title": "Cell Biology",
+      "instructor": "Dr. Matilda Reed",
+      "students": [
+        "student"
+      ],
+      "schedule": "Tue/Thu 11:00",
+      "room": "Room 12",
+      "color": "green"
+    },
+    {
+      "id": 3,
+      "code": "ENG205",
+      "title": "Technical Writing",
+      "instructor": "Prof. Lucy Stone",
+      "students": [
+        "student"
+      ],
+      "schedule": "Fri 10:00",
+      "room": "Room 5",
+      "color": "orange"
+    }
+  ],
+  "announcements": [
+    {
+      "id": 1,
+      "title": "Midterm timetable published",
+      "message": "The midterm timetable has been uploaded. Please check the course portal before Friday.",
+      "author": "Admin Office",
+      "date": "2026-10-07"
+    },
+    {
+      "id": 2,
+      "title": "Assignment 2 reminder",
+      "message": "Assignment 2 for CS101 is due on Friday at 23:59. Submit your work before the deadline.",
+      "author": "Dr. Daniel Brooks",
+      "date": "2026-10-08"
+    },
+    {
+      "id": 3,
+      "title": "Library lab access extended",
+      "message": "The computer lab remains open until 19:00 for programming practice sessions.",
+      "author": "Student Support",
+      "date": "2026-10-09"
+    }
+  ],
+  "assignments": [
+    {
+      "id": 1,
+      "title": "Programming Exercise 1",
+      "course": "CS101",
+      "due": "2026-10-12",
+      "status": "Open",
+      "description": "Write a short console program that calculates discounts."
+    },
+    {
+      "id": 2,
+      "title": "Research Summary",
+      "course": "BIO220",
+      "due": "2026-10-16",
+      "status": "Open",
+      "description": "Submit a 500-word review of cell membrane transport."
+    },
+    {
+      "id": 3,
+      "title": "Report Draft",
+      "course": "ENG205",
+      "due": "2026-10-18",
+      "status": "Open",
+      "description": "Prepare a first draft of the technical report for peer review."
+    }
+  ],
+  "grades": [
+    {
+      "id": 1,
+      "course": "CS101",
+      "assessment": "Quiz 1",
+      "score": 88,
+      "grade": "A"
+    },
+    {
+      "id": 2,
+      "course": "CS101",
+      "assessment": "Lab Task 1",
+      "score": 91,
+      "grade": "A"
+    },
+    {
+      "id": 3,
+      "course": "BIO220",
+      "assessment": "Report",
+      "score": 84,
+      "grade": "B"
+    },
+    {
+      "id": 4,
+      "course": "ENG205",
+      "assessment": "Draft Review",
+      "score": 78,
+      "grade": "B+"
+    }
+  ],
+  "submissions": [
+    {
+      "id": 1,
+      "assignmentId": 1,
+      "student": "student",
+      "title": "Programming Exercise 1",
+      "file": "programming_exercise_1.pdf",
+      "submittedAt": "2026-10-08T14:30:00.000Z",
+      "status": "accepted",
+      "reviewedAt": "2026-10-09T04:31:54.775Z",
+      "reviewedBy": "admin"
+    }
+  ]
+}

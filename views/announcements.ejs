@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="brand-box">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="eyebrow">StudyHub</p>
+            <h2>Portal</h2>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="/dashboard">Dashboard</a>
+          <a href="/courses">Courses</a>
+          <a href="/assignments">Assignments</a>
+          <a href="/grades">Grades</a>
+          <a class="active" href="/announcements">Announcements</a>
+          <% if (user.role === 'admin') { %>
+            <a href="/admin">Admin</a>
+          <% } %>
+          <a href="/logout">Logout</a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Latest updates</p>
+            <h1>Announcements</h1>
+          </div>
+        </header>
+
+        <section class="panel full-width">
+          <% announcements.forEach(item => { %>
+            <article class="announcement-item">
+              <div class="announcement-head">
+                <h3><%= item.title %></h3>
+                <small><%= item.date %></small>
+              </div>
+              <p><%= item.message %></p>
+              <span class="announcement-author">By <%= item.author %></span>
+            </article>
+          <% }) %>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

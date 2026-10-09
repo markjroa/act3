@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="auth-page">
+    <div class="auth-card">
+      <div class="brand-row">
+        <div class="brand-mark">S</div>
+        <div>
+          <p class="eyebrow">Education platform</p>
+          <h1>StudyHub</h1>
+        </div>
+      </div>
+
+      <h2>Welcome back</h2>
+      <p class="subtext">Sign in to access your courses, assignments, and performance reports.</p>
+
+      <% if (error) { %>
+        <div class="alert error"><%= error %></div>
+      <% } %>
+
+      <form method="POST" action="/login" class="login-form">
+        <label>
+          Username
+          <input type="text" name="username" placeholder="student" required />
+        </label>
+
+        <label>
+          Password
+          <input type="password" name="password" placeholder="••••••••" required />
+        </label>
+
+        <button type="submit">Log In</button>
+      </form>
+
+      <div class="demo-box">
+        <h3>Demo credentials</h3>
+        <ul>
+          <li><strong>Student:</strong> student / student123</li>
+          <li><strong>Lecturer:</strong> lecturer / lecturer123</li>
+          <li><strong>Admin:</strong> admin / admin123</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
